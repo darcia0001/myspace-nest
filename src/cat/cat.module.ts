@@ -4,11 +4,9 @@ import { CatService } from "./cat/cat.service";
 import { MongooseModule } from "@nestjs/mongoose";
 import { Cat, CatSchema } from "./schemas/cat.schema";
 //import { Connection } from "mongoose";
-
+console.log("Cat.name", Cat.name);
 @Module({
-  imports: [
-    MongooseModule.forFeature([{ name: Cat.name, schema: CatSchema }], "cats"),
-  ],
+  imports: [MongooseModule.forFeature([{ schema: CatSchema, name: Cat.name }])],
 
   controllers: [CatController],
   providers: [CatService],
