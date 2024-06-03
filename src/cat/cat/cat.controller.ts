@@ -2,9 +2,10 @@ import { CreateCatDto } from "../dto/cat-dto";
 import { CreateToyDto } from "../dto/toy-dto";
 import { Cat } from "../schemas/cat.schema";
 import { CatService } from "./cat.service";
-import { Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { Body, Controller, Get, Param, Post, UseGuards } from "@nestjs/common";
 import { ToyService } from "./toy.service";
 import { Toy } from "../schemas/toy.schema";
+import { JwtAuthGuard } from "src/core/auth/jwt-auth.guard";
 
 @Controller("cats")
 export class CatController {
@@ -13,8 +14,9 @@ export class CatController {
     private readonly toyService: ToyService,
   ) {}
 
+  @UseGuards(JwtAuthGuard)
   @Post()
-  async create(@Body() cat: CreateCatDto) {
+  async create(@Body() cat: CreateCatDto): Promise<Cat> {
     return this.catService.create(cat);
   }
   @Get()
