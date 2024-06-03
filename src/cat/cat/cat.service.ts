@@ -14,6 +14,17 @@ export class CatService {
   }
 
   async findAll(): Promise<Cat[]> {
-    return this.catModel.find().exec();
+    return this.catModel
+      .aggregate([
+        {
+          $lookup: {
+            from: "toys",
+            localField: "_id",
+            foreignField: "owner",
+            as: "toys",
+          },
+        },
+      ])
+      .exec();
   }
 }

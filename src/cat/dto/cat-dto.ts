@@ -9,4 +9,8 @@ export class CreateCatDto {
 
   @IsString()
   breed: string;
+
+  isValide() {
+    return this.name.length > 2;
+  }
 }
