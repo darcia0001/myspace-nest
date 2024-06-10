@@ -56,6 +56,10 @@ export class AppController {
     this.appService.addUsers(user);
     return user;
   }
+  @Get("/version")
+  version(@Req() request: Request, @Res() response: Response) {
+    response.status(HttpStatus.OK).send("1.0.1");
+  }
 
   @Get("/a")
   methodeA(@Req() request: Request, @Res() response: Response) {
