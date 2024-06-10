@@ -71,3 +71,16 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 ## License
 
 Nest is [MIT licensed](LICENSE).
+
+
+### CICD , orchestrateur circle 
+
+1. base  de code -> github 
+2. detecter le changement  -> push et et pull request master 
+3. build --> docker/image   --> docker build -t darciakhoussa/myspace-api:1.0.0  --platform linux/amd64  .
+4. faire des tests  -> jest  
+5. deployer sur un environnment  --> render /heroku / aws/gcloud / onpremise 
+
+GOzAYGLxszoXLXwH mamadoukhoussa
+
+mongosh "mongodb+srv://clusteredacy.hauub91.mongodb.net/" --apiVersion 1 --username mamadoukhoussa --password GOzAYGLxszoXLXwH
